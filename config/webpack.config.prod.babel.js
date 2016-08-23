@@ -21,6 +21,12 @@ export default {
 			test: /\.js$/,
 			exclude: path.resolve(__dirname, 'node_modules'),
 			loader: 'babel-loader',
+			query: {
+				plugins: [
+					'transform-react-inline-elements',
+					'transform-react-constant-elements',
+				],
+			},
 		}, {
 			test: /\.scss/,
 			loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: ['css?sourceMap!sass?sourceMap'] }),

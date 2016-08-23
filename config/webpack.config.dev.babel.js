@@ -25,8 +25,6 @@ export default {
 			exclude: path.resolve(__dirname, 'node_modules'),
 			query: {
 				plugins: [
-					//'jsx-control-statements',
-					//'transform-decorators-legacy',
 					'react-hot-loader/babel',
 				],
 			},

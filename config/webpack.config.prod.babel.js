@@ -1,12 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const srcPath = path.resolve(__dirname, '..', 'src');
 const buildPath = path.resolve(__dirname, '..', 'build');
 
-module.exports = {
+export default {
 	bail: true,
 	devtool: 'source-map',
 	entry: path.join(srcPath, 'index'),
@@ -23,7 +23,7 @@ module.exports = {
 			loader: 'babel-loader',
 		}, {
 			test: /\.scss/,
-			loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap'),
+			loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: ['css?sourceMap!sass?sourceMap'] }),
 			exclude: path.resolve(__dirname, 'node_modules'),
 		}, {
 			test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,

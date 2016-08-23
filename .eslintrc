@@ -1,6 +1,6 @@
 {
   "extends": "sl",
   "rules": {
-    "eol-last": "off"
-	}
+    "prefer-stateless-function": 0
+  }
 }

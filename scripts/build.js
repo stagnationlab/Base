@@ -2,15 +2,15 @@
 
 process.env.NODE_ENV = 'production';
 
-const rimrafSync = require('rimraf').sync;
-const path = require('path');
-const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
+import rimRaf from 'rimraf';
+import path from 'path';
+import webpack from 'webpack';
+import config from '../config/webpack.config.prod.babel';
 
 const buildPath = path.resolve('../build');
 
 
-rimrafSync(buildPath);
+rimRaf.sync(buildPath);
 
 webpack(config).run((err) => {
 	if (err) {

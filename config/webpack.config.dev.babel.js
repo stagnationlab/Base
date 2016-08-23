@@ -1,13 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const srcPath = path.resolve(__dirname, '..', 'src');
 const buildPath = path.resolve(__dirname, '..', 'build');
 
-module.exports = {
+export default {
 	devtool: 'source-map',
 	entry: [
+		'react-hot-loader/patch',
 		'webpack-dev-server/client?http://0.0.0.0:3000',
 		'webpack/hot/dev-server',
 		path.join(srcPath, 'index'),
@@ -22,6 +23,13 @@ module.exports = {
 		loaders: [{
 			test: /\.js$/,
 			exclude: path.resolve(__dirname, 'node_modules'),
+			query: {
+				plugins: [
+					//'jsx-control-statements',
+					//'transform-decorators-legacy',
+					'react-hot-loader/babel',
+				],
+			},
 			loader: 'babel-loader',
 		}, {
 			test: /\.scss/,

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('../config/webpack.config.dev');
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import config from '../config/webpack.config.dev.babel';
 
 const clearConsole = () => {
 	process.stdout.write('\x1B[2J\x1B[0f');

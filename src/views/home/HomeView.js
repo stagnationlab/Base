@@ -1,10 +1,22 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import './HomeView.scss';
+import { increment, decrement } from '../../actions/app';
 
+@connect(state => ({
+	value: state.value
+}), {
+	increment,
+	decrement,
+})
 export default class HomeView extends Component {
 	
-	static defaultProps = {};
+	static propTypes = {
+		value: PropTypes.number.isRequired,
+		increment: PropTypes.func.isRequired,
+		decrement: PropTypes.func.isRequired,
+	};
 
 	constructor(props) {
 		super(props);
@@ -16,8 +28,9 @@ export default class HomeView extends Component {
 
 	render() {
 		const {
-			someProp,
-			anotherThing,
+			value,
+			increment,
+			decrement
 		} = this.props;
 
 		const {
@@ -36,7 +49,9 @@ export default class HomeView extends Component {
 
 		return (
 			<div className={className} onClick={this.handleClick}>
-				tere
+				<button onClick={decrement}>-</button>
+				{value}
+				<button onClick={increment}>+</button>
 			</div>
 		);
 	}

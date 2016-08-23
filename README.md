@@ -11,4 +11,4 @@
  * change eslint so if constructor is present, all members are defined in them
  * ~~put babel-plugin-transform-react-constant-elements to production build~~
  * ~~implement new hot reload~~
- * add redux
+ * ~~add redux~~

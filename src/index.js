@@ -1,34 +1,19 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Router, browserHistory } from 'react-router';
-import routes from './routes';
 import Root from './Root';
-import { AppContainer } from 'react-hot-loader';
 
 import './gfx/main.scss';
-/*
- // srcroll page to top when url changes
- let prevLocation = {};
- browserHistory.listenBefore(location => {
- const pathChanged = prevLocation.pathname !== location.pathname;
- const hashChanged = prevLocation.hash !== location.hash;
 
- if (pathChanged || hashChanged) window.scrollTo(0, 0);
- prevLocation = location;
- });
- */
+const rootElement = document.getElementById('root');
 
 if (process.env.NODE_ENV !== 'production') {
-	// const hotloader = require('react-hot-loader'); // eslint-disable-line global-require
-	// console.log(hotloader);
-
-	// const AppContainer = hotloader.AppContainer;
+	const AppContainer = require('react-hot-loader').AppContainer; // eslint-disable-line global-require
 
 	ReactDom.render(
 		<AppContainer>
 			<Root />
 		</AppContainer>,
-		document.getElementById('root')
+		rootElement
 	);
 
 	if (module.hot) {
@@ -39,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 				<AppContainer>
 					<NextRoot />
 				</AppContainer>,
-				document.getElementById('root')
+				rootElement
 			);
 		});
 	}
@@ -47,7 +32,7 @@ if (process.env.NODE_ENV !== 'production') {
 	// window.store = store;
 } else {
 	ReactDom.render(
-		<Router history={browserHistory} routes={routes}/>,
-		document.getElementById('root')
+		<Root />,
+		rootElement
 	);
 }

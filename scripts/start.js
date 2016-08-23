@@ -83,7 +83,17 @@ new WebpackDevServer(compiler, {
 	publicPath: config.output.publicPath,
 	hot: true,
 	historyApiFallback: true,
-	quiet: true,
+	noInfo: false,
+	quiet: false,
+	stats: {
+		assets: false,
+		colors: true,
+		version: false,
+		hash: false,
+		timings: true,
+		chunks: false,
+		chunkModules: false,
+	},
 }).listen(3000, '0.0.0.0', (err) => {
 	if (err) {
 		return console.log(err);

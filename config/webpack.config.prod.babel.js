@@ -19,7 +19,7 @@ export default {
 	module: {
 		loaders: [{
 			test: /\.js$/,
-			exclude: path.resolve(__dirname, 'node_modules'),
+			exclude: /node_modules/,
 			loader: 'babel-loader',
 			query: {
 				plugins: [
@@ -30,11 +30,11 @@ export default {
 		}, {
 			test: /\.scss/,
 			loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: ['css?sourceMap!sass?sourceMap'] }),
-			exclude: path.resolve(__dirname, 'node_modules'),
+			exclude: /node_modules/,
 		}, {
 			test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
 			loader: `url?limit=10000&name=[path][name].[ext]&context=${__dirname}`,
-			exclude: path.resolve(__dirname, 'node_modules'),
+			exclude: /node_modules/,
 		}],
 	},
 	plugins: [

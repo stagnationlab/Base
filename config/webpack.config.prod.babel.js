@@ -40,11 +40,17 @@ export default {
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: path.resolve(__dirname, '..', 'index.template.html'),
+			template: path.join(srcPath, 'index.template.html'),
 		}),
 		new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
 		new ExtractTextPlugin('[name].[contenthash].css'),
+		new webpack.optimize.UglifyJsPlugin({
+			sourceMap: true,
+			compressor: {
+				warnings: false,
+			},
+		}),
 	],
 };

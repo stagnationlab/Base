@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "babel-node ./scripts/start.js",
-    "build": "babel-node ./scripts/build.js"
+    "build": "babel-node ./scripts/build.js",
+    "postinstall": "babel-node ./scripts/postinstall.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,6 @@
 #TODO
  * ~~make use of babel-node to convert scripts to es-next~~
- * build script does not clean build folder before building new code
-    * rimraf sync don't work
+ * ~~build script does not clean build folder before building new code~~
  * ~~make developer file~~
  * ~~webpack config files to es-next. names to .babel.js~~
  * make different babelrc config files

@@ -2,16 +2,15 @@ import classNames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import './HomeView.scss';
-import { increment, decrement } from '../../actions/app';
+import { increment, decrement } from '../../actions/test';
 
 @connect(state => ({
-	value: state.value
+	value: state.test.value,
 }), {
 	increment,
 	decrement,
 })
 export default class HomeView extends Component {
-	
 	static propTypes = {
 		value: PropTypes.number.isRequired,
 		increment: PropTypes.func.isRequired,

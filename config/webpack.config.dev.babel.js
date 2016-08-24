@@ -44,6 +44,7 @@ export default {
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: path.join(srcPath, 'index.template.html'),
+			favicon: path.join(srcPath, 'gfx/favicon.ico'),
 		}),
 		new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
 		new webpack.HotModuleReplacementPlugin(),

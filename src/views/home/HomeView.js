@@ -30,8 +30,6 @@ export default class HomeView extends Component {
 	render() {
 		const {
 			value,
-			increment,
-			decrement
 		} = this.props;
 
 		const {
@@ -50,9 +48,9 @@ export default class HomeView extends Component {
 
 		return (
 			<div className={className} onClick={this.handleClick}>
-				<button onClick={decrement}>-</button>
+				<button onClick={this.props.decrement}>-</button>
 				{value}
-				<button onClick={increment}>+</button>
+				<button onClick={this.props.increment}>+</button>
 				<br />
 				<Link to="/test">Show another page</Link>
 			</div>

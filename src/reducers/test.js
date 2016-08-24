@@ -4,11 +4,11 @@ import { INCREMENT, DECREMENT } from '../config/constants';
 const defaultState = { value: 0 };
 
 export default handleActions({
-	[INCREMENT]: (state, action) => ({
+	[INCREMENT]: (state) => ({
 		...state,
 		value: state.value + 1,
 	}),
-	[DECREMENT]: (state, action) => ({
+	[DECREMENT]: (state) => ({
 		...state,
 		value: state.value - 1,
 	}),

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+
+import configureStore from './src/configureStore';
 import Root from './Root';
 
 import './gfx/main.scss';
 
 const rootElement = document.getElementById('root');
+const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
 	const AppContainer = require('react-hot-loader').AppContainer; // eslint-disable-line global-require
 
 	ReactDom.render(
 		<AppContainer>
-			<Root />
+			<Root store={store} />
 		</AppContainer>,
 		rootElement
 	);
@@ -22,7 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 			ReactDom.render(
 				<AppContainer>
-					<NextRoot />
+					<NextRoot store={store} />
 				</AppContainer>,
 				rootElement
 			);
@@ -32,7 +35,7 @@ if (process.env.NODE_ENV !== 'production') {
 	// window.store = store;
 } else {
 	ReactDom.render(
-		<Root />,
+		<Root store={store} />,
 		rootElement
 	);
 }

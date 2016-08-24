@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
 import './HomeView.scss';
 import { increment, decrement } from '../../actions/test';
 
@@ -51,6 +53,8 @@ export default class HomeView extends Component {
 				<button onClick={decrement}>-</button>
 				{value}
 				<button onClick={increment}>+</button>
+				<br />
+				<Link to="/test">Show another page</Link>
 			</div>
 		);
 	}

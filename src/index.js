@@ -10,6 +10,8 @@ const rootElement = document.getElementById('root');
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
+	window.store = store;
+	
 	const AppContainer = require('react-hot-loader').AppContainer; // eslint-disable-line global-require
 
 	ReactDom.render(

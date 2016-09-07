@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 
 const srcPath = path.resolve(__dirname, '..', 'src');
 const buildPath = path.resolve(__dirname, '..', 'build');
@@ -16,6 +17,7 @@ export default {
 		chunkFilename: '[name].[chunkhash].chunk.js',
 		publicPath: '/',
 	},
+
 	module: {
 		loaders: [{
 			test: /\.js$/,
@@ -29,7 +31,10 @@ export default {
 			},
 		}, {
 			test: /\.scss/,
-			loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: ['css?sourceMap!sass?sourceMap'] }),
+			loader: ExtractTextPlugin.extract({
+				fallbackLoader: 'style',
+				loader: ['css?sourceMap!postcss?sourceMap!sass?sourceMap']
+			}),
 			exclude: /node_modules/,
 		}, {
 			test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
@@ -37,6 +42,18 @@ export default {
 			exclude: /node_modules/,
 		}],
 	},
+
+	postcss: () => [
+		autoprefixer({
+			browsers: [
+				'>1%',
+				'last 4 versions',
+				'Firefox ESR',
+				'not ie < 9',
+			],
+		}),
+	],
+
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,

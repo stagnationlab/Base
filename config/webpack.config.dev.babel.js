@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 import config from '../config/developer';
 
 const srcPath = path.resolve(__dirname, '..', 'src');
@@ -32,7 +33,7 @@ export default {
 			loader: 'babel-loader',
 		}, {
 			test: /\.scss/,
-			loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
+			loaders: ['style', 'css?sourceMap', 'postcss?sourceMap', 'sass?sourceMap'],
 			exclude: /node_modules/,
 		}, {
 			test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
@@ -40,6 +41,17 @@ export default {
 			exclude: /node_modules/,
 		}],
 	},
+
+	postcss: () => [
+		autoprefixer({
+			browsers: [
+				'>1%',
+				'last 4 versions',
+				'Firefox ESR',
+				'not ie < 9',
+			],
+		}),
+	],
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,

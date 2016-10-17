@@ -12,3 +12,4 @@
  * ~~put babel-plugin-transform-react-constant-elements to production build~~
  * ~~implement new hot reload~~
  * ~~add redux~~
+ * deploy using jenkins

@@ -13,7 +13,7 @@ import recursive from 'recursive-readdir';
 import path from 'path';
 import webpack from 'webpack';
 import stripAnsi from 'strip-ansi';
-import config from '../config/webpack.config.prod.babel';
+import config from '../internals/webpack/webpack.prod.babel';
 
 const buildPath = path.resolve(__dirname, '../build');
 

@@ -45,6 +45,7 @@ export class HomeView extends Component {
 
 		return (
 			<div className={className} onClick={this.handleClick}>
+				<img src="./img/lolcat.jpg" role="presentation" />
 				<button onClick={this.props.decrement}>-</button>
 				{value}
 				<button onClick={this.props.increment}>+</button>

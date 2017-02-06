@@ -2,7 +2,7 @@
 
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import config from '../config/webpack.config.dev.babel';
+import config from '../internals/webpack/webpack.dev.babel';
 
 const clearConsole = () => {
 	process.stdout.write('\x1B[2J\x1B[0f');

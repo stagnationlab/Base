@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+import './gfx/main.scss';
+
 import configureStore from './src/configureStore';
 import Root from './Root';
 
-import './gfx/main.scss';
 
 const rootElement = document.getElementById('root');
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
 	window.store = store;
-	
+
 	const AppContainer = require('react-hot-loader').AppContainer; // eslint-disable-line global-require
 
 	ReactDom.render(

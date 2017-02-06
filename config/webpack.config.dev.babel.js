@@ -2,7 +2,9 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
+import postcssConfig from './postcss.config';
 import config from '../config/developer';
+import packageJson from '../package.json';
 
 const srcPath = path.resolve(__dirname, '..', 'src');
 const buildPath = path.resolve(__dirname, '..', 'build');
@@ -33,16 +35,16 @@ export default {
 			loader: 'babel-loader',
 		}, {
 			test: /\.scss/,
-			loaders: ['style', 'css?sourceMap', 'postcss?sourceMap', 'sass?sourceMap'],
+			loaders: ['style-loader', 'css-loader?sourceMap', /* 'postcss-loader?sourceMap',*/ 'sass-loader?sourceMap'],
 			exclude: /node_modules/,
 		}, {
 			test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
-			loader: `url?limit=1000000000&name=[path][name].[ext]&context=${__dirname}`,
+			loader: `url-loader?limit=1000000000&name=[path][name].[ext]&context=${__dirname}`,
 			exclude: /node_modules/,
 		}],
 	},
 
-	postcss: () => [
+	/*postcss: () => [
 		autoprefixer({
 			browsers: [
 				'>1%',
@@ -51,14 +53,17 @@ export default {
 				'not ie < 9',
 			],
 		}),
-	],
+	],*/
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: path.join(srcPath, 'index.template.html'),
 			favicon: path.join(srcPath, 'gfx/favicon.ico'),
 		}),
-		new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': '"development"',
+			'APP_VERSION': JSON.stringify(packageJson.version),
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 	],
 };

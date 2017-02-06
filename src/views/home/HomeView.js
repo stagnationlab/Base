@@ -2,25 +2,17 @@ import classNames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import autobind from 'autobind-decorator';
 
 import './HomeView.scss';
 import { increment, decrement, loadApi } from '../../actions/test';
 
-@connect(state => ({
-	value: state.test.value,
-	isLoading: state.test.isLoading,
-	apiData: state.test.data,
-	apiError: state.test.error,
-}), {
-	increment,
-	decrement,
-	loadApi
-})
-@autobind
-export default class HomeView extends Component {
+export class HomeView extends Component {
 	static propTypes = {
 		value: PropTypes.number.isRequired,
+		isLoading: PropTypes.bool.isRequired,
+		apiData: PropTypes.string,
+		apiError: PropTypes.string,
+		loadApi: PropTypes.func.isRequired,
 		increment: PropTypes.func.isRequired,
 		decrement: PropTypes.func.isRequired,
 	};
@@ -33,7 +25,7 @@ export default class HomeView extends Component {
 		this.minutv = 0;
 	}
 
-	render() {
+	render = () => {
 		const {
 			value,
 		} = this.props;
@@ -57,24 +49,25 @@ export default class HomeView extends Component {
 				{value}
 				<button onClick={this.props.increment}>+</button>
 				<br />
-				<button onClick={this.handleLoadApi.bind(this, false)}>Load data from api</button>
-				<button onClick={this.handleLoadApi.bind(this, true)}>Test api error</button>
+				<button onClick={this.handleLoadApi.bind(null, false)}>Load data from api</button>
+				<button onClick={this.handleLoadApi.bind(null, true)}>Test api error</button>
 				<p>API state: {this.getApiState()}</p>
 				<br />
 				<Link to="/test">Show another page</Link>
+				<input />
 			</div>
 		);
 	}
 
-	handleLoadApi(testFail = false) {
+	handleLoadApi = (testFail = false) => {
 		this.props.loadApi({ testFail });
 	}
 
-	handleClick(e) {
+	handleClick = (e) => {
 		e.preventDefault();
 	}
 
-	getApiState() {
+	getApiState = () => {
 		const {
 			isLoading,
 			apiData,
@@ -96,3 +89,20 @@ export default class HomeView extends Component {
 		return 'Data not loaded';
 	}
 }
+
+const mapStateToProps = state => ({
+	value: state.test.value,
+	isLoading: state.test.isLoading,
+	apiData: state.test.data,
+	apiError: state.test.error,
+});
+
+const mapDispatchToProps = {
+	increment,
+	decrement,
+	loadApi,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+	HomeView
+);

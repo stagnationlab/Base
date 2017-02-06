@@ -1,12 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import autobind from 'autobind-decorator';
 
-@connect(state => ({
-	value: state.test.value,
-}))
-@autobind
-export default class TestView extends Component {
+export class TestView extends Component {
 	static propTypes = {
 		value: PropTypes.number.isRequired,
 	};
@@ -15,7 +10,7 @@ export default class TestView extends Component {
 		router: PropTypes.object.isRequired,
 	};
 
-	render() {
+	render = () => {
 		const {
 			value,
 		} = this.props;
@@ -29,7 +24,13 @@ export default class TestView extends Component {
 		);
 	}
 
-	handleBack() {
+	handleBack = () => {
 		this.context.router.goBack();
 	}
 }
+
+const mapStateToProps = state => ({
+	value: state.test.value,
+});
+
+export default connect(mapStateToProps)(TestView);

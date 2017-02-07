@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import routes from './routes';
 
-export default class Root extends React.Component {
+export default class Root extends Component {
 	static propTypes = {
 		store: PropTypes.object.isRequired,
 	};

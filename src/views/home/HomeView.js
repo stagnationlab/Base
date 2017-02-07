@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import './HomeView.scss';
-import { increment, decrement, loadApi } from '../../actions/testAction';
+import { increment, decrement, loadApi } from './actions/homeViewActions';
 
 export class HomeView extends Component {
 	static propTypes = {
@@ -95,11 +95,11 @@ export class HomeView extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	value: state.test.value,
-	isLoading: state.test.isLoading,
-	apiData: state.test.data,
-	apiError: state.test.error,
+const mapStateToProps = ({ homeViewReducer }) => ({
+	value: homeViewReducer.value,
+	isLoading: homeViewReducer.isLoading,
+	apiData: homeViewReducer.data,
+	apiError: homeViewReducer.error,
 });
 
 const mapDispatchToProps = {

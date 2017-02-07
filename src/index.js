@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import configureStore from './src/configureStore';
+import configureStore from './store';
 
 import './gfx/main.scss';
 import Root from './Root';

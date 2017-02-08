@@ -16,7 +16,6 @@ export default {
 		indexHtml: resolveApp('public/index.html'),
 		packageJson: resolveApp('package.json'),
 	},
-	port: 3000,
 	devTool: 'cheap-module-source-map',
 	...internals,
 };

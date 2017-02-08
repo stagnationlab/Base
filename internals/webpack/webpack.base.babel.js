@@ -61,7 +61,6 @@ export default options => ({
 			loader: 'file-loader',
 		}, {
 			test: /\.(jpg|png|gif)$/,
-			// loader: `url-loader?limit=1000000000&name=[path][name].[ext]&context=${__dirname}`,
 			loaders: [
 				'file-loader',
 				{

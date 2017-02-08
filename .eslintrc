@@ -1,7 +1,6 @@
 {
   "extends": "sl",
   "rules": {
-    "react/prefer-stateless-function": 0,
     "import/no-named-as-default": 0
   },
   "env": {

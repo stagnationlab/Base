@@ -10,7 +10,7 @@ exports[`HomeView api to be called 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -27,7 +27,7 @@ exports[`HomeView api to be called 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -39,16 +39,6 @@ exports[`HomeView api to be called 1`] = `
       Data not loaded
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -66,7 +56,7 @@ exports[`HomeView have correct error state 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -83,7 +73,7 @@ exports[`HomeView have correct error state 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -95,16 +85,6 @@ exports[`HomeView have correct error state 1`] = `
       Api error
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -122,7 +102,7 @@ exports[`HomeView have correct loading state 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -139,7 +119,7 @@ exports[`HomeView have correct loading state 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -151,16 +131,6 @@ exports[`HomeView have correct loading state 1`] = `
       Loading...
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -178,7 +148,7 @@ exports[`HomeView have correct props 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -195,7 +165,7 @@ exports[`HomeView have correct props 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -207,16 +177,6 @@ exports[`HomeView have correct props 1`] = `
       Data not loaded
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -235,7 +195,7 @@ exports[`HomeView have correct success state 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -252,7 +212,7 @@ exports[`HomeView have correct success state 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -264,16 +224,6 @@ exports[`HomeView have correct success state 1`] = `
       Test api success
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -291,7 +241,7 @@ exports[`HomeView increment to be called 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -308,7 +258,7 @@ exports[`HomeView increment to be called 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -320,16 +270,6 @@ exports[`HomeView increment to be called 1`] = `
       Data not loaded
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>
@@ -347,7 +287,7 @@ exports[`HomeView renders correctly 1`] = `
     className="HomeView babelPlugin babelPlugin babelPlugin btn123 isVisible"
     onClick={[Function]}>
     <img
-      role="presentation"
+      alt="lolcat"
       src="test-file-stub" />
     <button
       className="btn btn-decrement"
@@ -364,7 +304,7 @@ exports[`HomeView renders correctly 1`] = `
     <button
       className="btn btn-load-data"
       onClick={[Function]}>
-      Load data from api
+      Load data from apisdg fgsdfg
     </button>
     <button
       className="btn btn-load-data"
@@ -376,16 +316,6 @@ exports[`HomeView renders correctly 1`] = `
       Data not loaded
     </p>
     <br />
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/test">
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Show another page
-      </a>
-    </Link>
     <input />
   </div>
 </HomeView>

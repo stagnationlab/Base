@@ -1,4 +1,3 @@
-import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
@@ -10,10 +9,15 @@ export default (webpackBase)({
 	cache: true,
 	devtool: internals.devtool,
 
+	output: {
+		pathinfo: true,
+	},
+
 	entry: [
-		'react-hot-loader/patch',
-		`webpack-dev-server/client?http://localhost:${internals.port}`,
-		'webpack/hot/only-dev-server',
+		require.resolve('react-hot-loader/patch'),
+		// require.resolve('webpack-dev-server/client') + '?/',
+		// require.resolve('webpack/hot/dev-server'),
+		require.resolve('react-dev-utils/webpackHotDevClient'),
 		internals.paths.indexJs,
 	],
 
@@ -21,7 +25,6 @@ export default (webpackBase)({
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: internals.paths.indexHtml,
-			favicon: path.resolve(internals.paths.public, 'favicon.ico'),
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new CaseSensitivePathsPlugin(),

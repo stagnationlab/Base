@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import './HomeView.scss';
 import { increment, decrement, loadApi } from './actions/homeViewActions';
@@ -47,14 +46,13 @@ export class HomeView extends Component {
 				<button className="btn btn-increment" onClick={this.props.increment}>+</button>
 				<br />
 				<button className="btn btn-load-data" onClick={this.handleLoadApi.bind(null, false)}>
-					Load data from api
+					Load data from apisdg fgsdfg
 				</button>
 				<button className="btn btn-load-data" onClick={this.handleLoadApi.bind(null, true)}>
 					Test api error
 				</button>
 				<p>API state: {this.getApiState()}</p>
 				<br />
-				<Link to="/test">Show another page</Link>
 				<input />
 			</div>
 		);

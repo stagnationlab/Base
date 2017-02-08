@@ -24,7 +24,7 @@ if (!checkRequiredFiles([internals.paths.indexHtml, internals.paths.indexJs])) {
 }
 
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT = process.env.PORT || internals.port;
+const DEFAULT_PORT = process.env.PORT || 3000;
 let compiler;
 let handleCompile;
 

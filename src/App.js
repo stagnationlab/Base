@@ -9,7 +9,7 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<div className="content">
-					{this.props.children}
+					{this.props.children && this.props.children}
 				</div>
 			</div>
 		);

@@ -16,7 +16,7 @@ const props = {
 const component = mount(
 	<Checkbox {...props}>
 		<div>children</div>
-	</Checkbox>
+	</Checkbox>,
 );
 
 describe('Checkbox', () => {

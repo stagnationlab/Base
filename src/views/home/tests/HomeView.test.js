@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { HomeView } from '../HomeView';
 import toJson from 'enzyme-to-json';
+import { HomeView } from '../HomeView';
 
 const loadApiMock = jest.fn();
 const incrementMock = jest.fn();
@@ -18,7 +18,7 @@ const props = {
 };
 
 const wrapper = mount(
-	<HomeView {...props} />
+	<HomeView {...props} />,
 );
 
 describe('HomeView', () => {

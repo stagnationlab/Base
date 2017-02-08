@@ -1,4 +1,4 @@
-/* eslint-disable no-console, import/imports-first, import/no-dynamic-require, global-require */
+/* eslint-disable no-console, import/first, import/no-dynamic-require, global-require */
 
 process.env.NODE_ENV = 'development';
 
@@ -123,11 +123,11 @@ function onProxyError(proxy) {
 		const host = req.headers && req.headers.host;
 		console.log(
       `${chalk.red('Proxy error:')} Could not proxy request ${chalk.cyan(req.url)
-      } from ${chalk.cyan(host)} to ${chalk.cyan(proxy)}.`
+      } from ${chalk.cyan(host)} to ${chalk.cyan(proxy)}.`,
     );
 		console.log(
       `See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (${
-      chalk.cyan(err.code)}).`
+      chalk.cyan(err.code)}).`,
     );
 		console.log();
 
@@ -137,7 +137,7 @@ function onProxyError(proxy) {
 			res.writeHead(500);
 		}
 		res.end(`Proxy error: Could not proxy request ${req.url} from ${
-      host} to ${proxy} (${err.code}).`
+      host} to ${proxy} (${err.code}).`,
     );
 	};
 }

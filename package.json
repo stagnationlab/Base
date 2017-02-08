@@ -31,7 +31,7 @@
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
     "css-loader": "^0.26.0",
     "detect-port": "^1.1.0",
-    "eslint-config-sl": "^2.0.0",
+    "eslint-config-sl": "^3.0.0",
     "file-loader": "^0.10.0",
     "html-loader": "^0.4.4",
     "image-webpack-loader": "^3.2.0",

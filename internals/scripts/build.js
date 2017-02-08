@@ -1,4 +1,4 @@
-/* eslint-disable no-console, import/imports-first */
+/* eslint-disable no-console, import/first */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -13,7 +13,7 @@ import recursive from 'recursive-readdir';
 import path from 'path';
 import webpack from 'webpack';
 import stripAnsi from 'strip-ansi';
-import config from '../internals/webpack/webpack.prod.babel';
+import config from '../webpack/webpack.prod.babel';
 
 const buildPath = path.resolve(__dirname, '../build');
 
@@ -45,7 +45,7 @@ function getDifferenceLabel(currentSize, previousSize) {
 function printFileSizes(stats, previousSizeMap) {
 	const assets = stats.toJson().assets
 		.filter(asset => /\.(js|css)$/.test(asset.name))
-		.map(asset => {
+		.map((asset) => {
 			const fileContents = fs.readFileSync(`${buildPath}/${asset.name}`);
 			const size = gzipSize(fileContents);
 			const previousSize = previousSizeMap[`\\${removeFileNameHash(asset.name)}`];
@@ -59,9 +59,9 @@ function printFileSizes(stats, previousSizeMap) {
 		});
 	assets.sort((a, b) => b.size - a.size);
 	const longestSizeLabelLength = Math.max.apply(null,
-		assets.map(a => stripAnsi(a.sizeLabel).length)
+		assets.map(a => stripAnsi(a.sizeLabel).length),
 	);
-	assets.forEach(asset => {
+	assets.forEach((asset) => {
 		let sizeLabel = asset.sizeLabel;
 		const sizeLength = stripAnsi(sizeLabel).length;
 		if (sizeLength < longestSizeLabelLength) {

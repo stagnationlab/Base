@@ -33,7 +33,7 @@ export default {
 			test: /\.scss/,
 			loader: ExtractTextPlugin.extract({
 				fallbackLoader: 'style',
-				loader: ['css?sourceMap!postcss?sourceMap!sass?sourceMap']
+				loader: ['css?sourceMap!postcss?sourceMap!sass?sourceMap'],
 			}),
 			exclude: /node_modules/,
 		}, {

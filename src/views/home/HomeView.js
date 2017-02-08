@@ -35,17 +35,13 @@ export class HomeView extends Component {
 		} = this.state;
 
 		const btnClassName = 'btn123';
-		const className = classNames(
-			'HomeView babelPlugin babelPlugin babelPlugin',
-			btnClassName,
-			{
-				isVisible: isOkToShowThis,
-			}
-		);
+		const className = classNames('HomeView babelPlugin babelPlugin babelPlugin', btnClassName, {
+			isVisible: isOkToShowThis,
+		});
 
 		return (
 			<div className={className} onClick={this.handleClick}>
-				<img src="./img/lolcat.jpg" role="presentation" />
+				<img src="./img/lolcat.jpg" alt="lolcat" />
 				<button className="btn btn-decrement" onClick={this.props.decrement}>-</button>
 				{value}
 				<button className="btn btn-increment" onClick={this.props.increment}>+</button>
@@ -109,5 +105,5 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-	HomeView
+	HomeView,
 );

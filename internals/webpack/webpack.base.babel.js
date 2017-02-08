@@ -1,20 +1,21 @@
-import path from 'path';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
+import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
+import internals from '../internals';
 import packageJson from '../../package.json';
 
-const srcPath = path.resolve(__dirname, '..', '..', 'src');
 const includedPaths = [
-	srcPath,
-	path.resolve(__dirname, '..', '..', 'config'),
+	internals.paths.src,
 ];
 
 export default options => ({
 	entry: options.entry,
 
 	output: {
-		path: path.resolve(process.cwd(), 'build'),
+		path: internals.paths.build,
 		publicPath: '/',
+		filename: '[name].js',
+		chunkFilename: '[name].js',
 		...options.output,
 	},
 
@@ -94,6 +95,9 @@ export default options => ({
 			},
 		}),
 		new webpack.NamedModulesPlugin(),
+		new InterpolateHtmlPlugin({
+			PUBLIC_URL: internals.paths.public,
+		}),
 	]),
 	resolve: {
 		modules: ['src', 'node_modules'],

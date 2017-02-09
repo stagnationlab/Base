@@ -1,18 +1,29 @@
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
-import internals from '../internals';
+import paths from '../paths';
 import packageJson from '../../package.json';
+import getClientEnvironment from '../../config/env';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file. Suppress warnings using silent
+// if this file is missing. dotenv will never modify any environment variables
+// that have already been set.
+// https://github.com/motdotla/dotenv
+dotenv.config({ silent: true });
 
 const includedPaths = [
-	internals.paths.src,
+	paths.src,
 ];
+
+const publicUrl = '';
+const env = getClientEnvironment(publicUrl);
 
 export default options => ({
 	entry: options.entry,
 
 	output: {
-		path: internals.paths.build,
+		path: paths.build,
 		publicPath: '/',
 		filename: '[name].js',
 		chunkFilename: '[name].js',
@@ -87,15 +98,10 @@ export default options => ({
 		new webpack.ProvidePlugin({
 			fetch: 'exports-loader?self.fetch!whatwg-fetch',
 		}),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-				APP_VERSION: JSON.stringify(packageJson.version),
-			},
-		}),
+		new webpack.DefinePlugin(env),
 		new webpack.NamedModulesPlugin(),
 		new InterpolateHtmlPlugin({
-			PUBLIC_URL: internals.paths.public,
+			PUBLIC_URL: publicUrl,
 		}),
 	]),
 	resolve: {
@@ -111,7 +117,7 @@ export default options => ({
 			'main',
 		],
 	},
-	devtool: options.devtool,
+	devtool: options.devtool || 'source-map',
 	target: 'web', // Make web variables accessible to webpack, e.g. window
 	performance: options.performance || {},
 });

@@ -1,27 +1,17 @@
 exports[`Checkbox have correct props 1`] = `
-<input
+<Checkbox
   checked={true}
-  className="checkbox__input"
+  className="new-test-class"
   disabled={true}
   name="New Checkbox"
-  onChange={[Function]}
-  type="checkbox" />
-`;
-
-exports[`Checkbox renders correctly 1`] = `
-<Checkbox
-  checked={false}
-  className="test-class"
-  disabled={false}
-  name="Checkbox"
   onChange={[Function]}>
   <label
-    className="checkbox test-class">
+    className="checkbox new-test-class">
     <input
-      checked={false}
+      checked={true}
       className="checkbox__input"
-      disabled={false}
-      name="Checkbox"
+      disabled={true}
+      name="New Checkbox"
       onChange={[Function]}
       type="checkbox" />
     <div>

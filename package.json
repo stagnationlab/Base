@@ -7,9 +7,7 @@
     "start": "babel-node ./internals/scripts/start.js",
     "build": "babel-node ./internals/scripts/build.js",
     "build:dll": "webpack --config ./config/config.dll.js",
-    "postinstall": "babel-node ./internals/scripts/postinstall.js",
-    "test": "jest",
-    "test:watch": " npm t -- --watch"
+    "test": "babel-node ./internals/scripts/test.js --env=jsdom"
   },
   "author": "",
   "license": "ISC",
@@ -62,16 +60,18 @@
     "testPathDirs": [
       "src"
     ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/testing/__mocks__/fileMock.js",
-      "\\.(css|scss|less)$": "<rootDir>/internals/testing/__mocks__/styleMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/jest/fileMock.js",
+      "\\.(css|scss|less)$": "<rootDir>/internals/jest/styleMock.js"
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ],
     "verbose": true,
-    "bail": false,
-    "collectCoverage": true
+    "bail": false
   },
   "dependencies": {
     "classnames": "^2.2.5",

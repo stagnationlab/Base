@@ -20,10 +20,6 @@ const component = mount(
 );
 
 describe('Checkbox', () => {
-	it('renders correctly', () => {
-		expect(toJson(component)).toMatchSnapshot();
-	});
-
 	it('have correct props', () => {
 		component.setProps({
 			className: 'new-test-class',
@@ -32,6 +28,6 @@ describe('Checkbox', () => {
 			disabled: !props.disabled,
 		});
 
-		expect(toJson(component.find('input'))).toMatchSnapshot();
+		expect(toJson(component)).toMatchSnapshot();
 	});
 });

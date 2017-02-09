@@ -14,17 +14,16 @@ import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import getProcessForPort from 'react-dev-utils/getProcessForPort';
 import prompt from 'react-dev-utils/prompt';
 import config from '../webpack/webpack.dev.babel';
-import internals from '../internals';
+import paths from '../paths';
 
 const isInteractive = process.stdout.isTTY;
-
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([internals.paths.indexHtml, internals.paths.indexJs])) {
+if (!checkRequiredFiles([paths.indexHtml, paths.indexJs])) {
 	process.exit(1);
 }
-
+	
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT = process.env.PORT || 3000;
+const DEFAULT_PORT = process.env.PORT || parseInt(process.env.APP_PORT, 10) || 3000;
 let compiler;
 let handleCompile;
 
@@ -145,7 +144,7 @@ function onProxyError(proxy) {
 function addMiddleware(devServer) {
   // `proxy` lets you to specify a fallback server during development.
   // Every unrecognized request will be forwarded to it.
-	const proxy = require(internals.paths.packageJson).proxy;
+	const proxy = require(paths.packageJson).proxy;
 	devServer.use(historyApiFallback({
     // Paths with dots should still use the history fallback.
     // See https://github.com/facebookincubator/create-react-app/issues/387.
@@ -212,7 +211,7 @@ function runDevServer(host, port, protocol) {
 	const devServer = new WebpackDevServer(compiler, {
 		compress: true,
 		clientLogLevel: 'none',
-		contentBase: internals.paths.public,
+		contentBase: paths.public,
 		hot: true,
 		publicPath: config.output.publicPath,
 		quiet: true,

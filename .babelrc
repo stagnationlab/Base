@@ -10,6 +10,7 @@
 	  "syntax-trailing-function-commas",
 	  "transform-class-properties",
 	  "transform-export-extensions",
-		"transform-react-jsx-img-import"
+		"transform-react-jsx-img-import",
+		"jsx-control-statements"
   ]
 }

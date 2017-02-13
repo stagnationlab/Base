@@ -1,4 +1,1 @@
-// test
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const LOAD_API = 'LOAD_API';
+export const GET_POSTS_BY_USER_ID = 'GET_POSTS_BY_USER_ID';

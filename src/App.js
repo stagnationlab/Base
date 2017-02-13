@@ -1,17 +1,12 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import HomeView from './views/home/HomeView';
-import TestView from './views/test/TestView';
+import PostView from './views/post/PostView';
 
 export default () => (
 	<div className="app">
-		<nav className="links">
-			<Link to="/">Home</Link>{' | '}
-			<Link to="/test">Test</Link>
-		</nav>
-
 		<Route exact path="/" component={HomeView} />
-		<Route path="/test" component={TestView} />
+		<Route path="/post/:id" component={PostView} />
 	</div>
 );

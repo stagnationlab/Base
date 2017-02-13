@@ -18,6 +18,7 @@ export default (webpackBase)({
 		// require.resolve('webpack-dev-server/client') + '?/',
 		// require.resolve('webpack/hot/dev-server'),
 		require.resolve('react-dev-utils/webpackHotDevClient'),
+		require.resolve('../../config/polyfills'),
 		paths.indexJs,
 	],
 
@@ -27,6 +28,8 @@ export default (webpackBase)({
 			template: paths.indexHtml,
 		}),
 		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
 		new CaseSensitivePathsPlugin(),
 		new WatchMissingNodeModulesPlugin(paths.nodeModules),
 	],

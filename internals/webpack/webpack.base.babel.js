@@ -1,10 +1,9 @@
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
-import paths from '../paths';
-import packageJson from '../../package.json';
-import getClientEnvironment from '../../config/env';
 import dotenv from 'dotenv';
+import paths from '../paths';
+import getClientEnvironment from '../../config/env';
 
 // Load environment variables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
@@ -14,6 +13,7 @@ dotenv.config({ silent: true });
 
 const includedPaths = [
 	paths.src,
+	paths.config,
 ];
 
 const publicUrl = '';
@@ -95,11 +95,7 @@ export default options => ({
 	},
 
 	plugins: options.plugins.concat([
-		new webpack.ProvidePlugin({
-			fetch: 'exports-loader?self.fetch!whatwg-fetch',
-		}),
 		new webpack.DefinePlugin(env),
-		new webpack.NamedModulesPlugin(),
 		new InterpolateHtmlPlugin({
 			PUBLIC_URL: publicUrl,
 		}),

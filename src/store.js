@@ -3,12 +3,14 @@ import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-loading-promise-middleware';
 
 // reducers
-import homeViewReducer from './views/home/reducers/homeViewReducer';
+import homeViewReducer from './views/home/homeViewReducer';
+import postViewReducer from './views/post/postViewReducer';
 
 export default function configureStore(initialState) {
 	return createStore(
 		combineReducers({
 			homeViewReducer,
+			postViewReducer,
 		}),
 		initialState,
 		compose(

@@ -21,7 +21,7 @@ const isInteractive = process.stdout.isTTY;
 if (!checkRequiredFiles([paths.indexHtml, paths.indexJs])) {
 	process.exit(1);
 }
-	
+
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = process.env.PORT || parseInt(process.env.APP_PORT, 10) || 3000;
 let compiler;

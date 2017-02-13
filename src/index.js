@@ -11,14 +11,20 @@ import App from './App';
 const rootElement = document.getElementById('root');
 const store = configureStore();
 
+function renderApp(content) {
+	return (
+		<AppContainer>
+			<Provider store={store}>
+				<Router>
+					{content}
+				</Router>
+			</Provider>
+		</AppContainer>
+	);
+}
+
 render(
-	<AppContainer>
-		<Provider store={store}>
-			<Router>
-				<App />
-			</Router>
-		</Provider>
-	</AppContainer>,
+	renderApp(<App />),
 	rootElement,
 );
 
@@ -27,13 +33,7 @@ if (module.hot) {
 		const NextApp = require('./App').default; // eslint-disable-line global-require
 
 		render(
-			<AppContainer>
-				<Provider store={store}>
-					<Router>
-						<NextApp />
-					</Router>
-				</Provider>
-			</AppContainer>,
+			renderApp(<NextApp />),
 			rootElement,
 		);
 	});

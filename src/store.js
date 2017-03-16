@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import promiseMiddleware from 'redux-loading-promise-middleware';
+// import promiseMiddleware from 'redux-loading-promise-middleware';
+import promiseMiddleware from './services/promiseMiddleware';
 
 // reducers
 import homeViewReducer from './views/home/homeViewReducer';

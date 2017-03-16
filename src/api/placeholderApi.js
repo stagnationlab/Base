@@ -1,9 +1,9 @@
-import { get } from '../services/fetchService';
+import { get, post } from '../services/fetchService';
 
-export function getPostsByUserId(id) {
-	return get(`posts?userId=${id}`);
-}
+export const getPostsByUserId = id => get(`posts?userId=${id}`);
 
-export function getPostById(id) {
-	return get(`posts/${id}`);
-}
+export const getPostById = id => get(`posts/${id}`);
+
+export const getCommentsyPostId = postId => get(`comments?postId=${postId}`);
+
+export const saveComment = (postId, data) =>	post(`comments/add?postId=${postId}`, data, true);

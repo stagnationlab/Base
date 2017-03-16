@@ -1,18 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Form, Field, WithFormProp } from 'react-form-helper-sl';
+import { required, minLength } from '../../services/validatorService';
+import { postViewReducerProps } from './postViewReducer';
 import * as postViewActions from './postViewActions';
+import Checkbox from './../../components/checkbox/Checkbox';
 import './PostView.scss';
 
 export class PostView extends Component {
+
 	static propTypes = {
+		...postViewReducerProps,
 		error: PropTypes.string,
-		isLoading: PropTypes.bool.isRequired,
-		post: PropTypes.shape({
-			id: PropTypes.number,
-			title: PropTypes.string,
-			body: PropTypes.string,
-		}),
 		getPostById: PropTypes.func.isRequired,
+		getCommentsyPostId: PropTypes.func.isRequired,
+		saveComment: PropTypes.func.isRequired,
 		match: PropTypes.shape({
 			params: PropTypes.shape({
 				id: PropTypes.string.isRequired,
@@ -21,12 +23,14 @@ export class PostView extends Component {
 	};
 
 	componentDidMount() {
+		// get post and comments
 		this.props.getPostById(this.props.match.params.id);
+		this.props.getCommentsyPostId(this.props.match.params.id);
 	}
 
 	render = () => {
 		const {
-			isLoading,
+			isPostLoading,
 			error,
 			post,
 		} = this.props;
@@ -38,7 +42,7 @@ export class PostView extends Component {
 						<p>Could not load post: {error}</p>
 					</When>
 
-					<When condition={isLoading}>
+					<When condition={isPostLoading}>
 						<p>...loading</p>
 					</When>
 
@@ -48,24 +52,141 @@ export class PostView extends Component {
 
 							<img src={`http://lorempixel.com/200/200/animals/${post.id}`} alt={post.title} />
 							<p>{post.body}</p>
+							<hr />
+
+							{this.renderCommentList()}
+							<hr />
+
+							{this.renderCommentForm()}
 						</div>
 					</Otherwise>
 				</Choose>
 			</div>
 		);
 	};
+
+	renderCommentList = () => (
+		<div className="PostView__comments">
+			<h3>Comments</h3>
+
+			{this.props.comments.map(comment => (
+				<div key={comment.id} className="PostView__comment">
+					<p>
+						<strong>{comment.name}: </strong>
+						{comment.body}
+					</p>
+				</div>
+			))}
+		</div>
+	);
+
+	renderCommentForm = () => (
+		<Form
+			className="PostView__add-comment"
+			onSubmit={this.handleCommentFormSubmit}
+			onSuccess={this.handleCommentFormSuccess}
+			onFail={this.handleCommentFormFail}
+		>
+			<div className="PostView__add-comment__field">
+				<label>Name</label>
+				<Field
+					type="text"
+					name="name"
+					validate={[required, minLength(3)]}
+					component={this.renderCommentFormField}
+				/>
+			</div>
+
+			<div className="PostView__add-comment__field">
+				<label>Email</label>
+				<Field
+					type="text"
+					name="email"
+					validate={[required, minLength(3)]}
+					component={this.renderCommentFormField}
+				/>
+			</div>
+
+			<div className="PostView__add-comment__field">
+				<label>Comment</label>
+				<Field
+					type="textarea"
+					name="body"
+					validate={required}
+					component={this.renderCommentFormField}
+				/>
+			</div>
+
+			<div className="PostView__add-comment__field">
+				<Field
+					name="pointless-checkbox"
+					validate={[required, minLength(3)]}
+					component={(input, { error, isTouched }) => (
+						<div>
+							<Checkbox {...input}>Pointless checkbox</Checkbox>
+							<br />
+							{isTouched && error && (
+								<small>{error}</small>
+							)}
+						</div>
+					)}
+				/>
+			</div>
+
+			<WithFormProp isSubmitting>
+				<p>...... I am saving .......</p>
+			</WithFormProp>
+
+			<WithFormProp hasErrors={false} isSubmitting={false}>
+				<p>...... I have no errors .......</p>
+			</WithFormProp>
+
+			<WithFormProp
+				component={({ hasErrors, isSubmitting }) => (
+					<button type="submit" disabled={isSubmitting || hasErrors}>Send</button>
+				)}
+			/>
+		</Form>
+	);
+
+	renderCommentFormField = ({ type, ...props }, { error, isTouched }) => {
+		let inputElem;
+
+		switch (type) {
+			case 'textarea':
+				inputElem = <textarea {...props} rows="5" />;
+				break;
+
+			default:
+				inputElem = <input {...props} type={type} />;
+				break;
+		}
+
+		return (
+			<div className="PostView__add-comment__field">
+				{inputElem}
+				<br />
+				{isTouched && error && (
+					<small>{error}</small>
+				)}
+			</div>
+		);
+	}
+
+	handleCommentFormSubmit = values => this.props.saveComment(this.props.post.id, values);
+
+	handleCommentFormSuccess = reset => reset();
+
+	handleCommentFormFail = response => response.validationErrors;
 }
 
 const mapStateToProps = ({ postViewReducer }) => ({
-	error: postViewReducer.error,
 	post: postViewReducer.post,
-	isLoading: postViewReducer.isPostLoading || postViewReducer.post === null,
+	isPostLoading: postViewReducer.isPostLoading || postViewReducer.post === null,
+	comments: postViewReducer.comments,
+	error: postViewReducer.postError || postViewReducer.commentsError,
 });
 
-const mapDispatchToProps = {
-	...postViewActions,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(
+export default connect(mapStateToProps, { ...postViewActions })(
 	PostView,
 );

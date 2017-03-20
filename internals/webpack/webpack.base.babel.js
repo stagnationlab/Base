@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import path from 'path';
 import autoprefixer from 'autoprefixer';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import dotenv from 'dotenv';
@@ -45,7 +46,7 @@ export default options => ({
 				'style-loader',
 				{
 					loader: 'css-loader',
-					options: { sourceMap: true, importLoaders: 1 },
+					options: { sourceMap: true, importLoaders: 1, fixUrls: true },
 				},
 				{
 					loader: 'postcss-loader',
@@ -68,12 +69,19 @@ export default options => ({
 				},
 			],
 		}, {
-			test: /\.(eot|svg|ttf|woff|woff2)$/,
+			test: /\.(ttf|woff|woff2)$/,
 			loader: 'file-loader',
 		}, {
-			test: /\.(jpg|png|gif)$/,
+			test: /\.(gif|png|jpe?g|svg)$/,
 			loaders: [
-				'file-loader',
+				{
+					loader: 'file-loader',
+					query: {
+						hash: 'sha512',
+						digest: 'hex',
+						name: '[path][name].[ext]',
+					},
+				},
 				{
 					loader: 'image-webpack-loader',
 					query: {

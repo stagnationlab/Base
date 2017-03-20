@@ -1,5 +1,7 @@
 .idea/
-.vscode/crome
+.vscode/chrome
+npm-debug.log.*
+debug.log
 build/
 node_modules/
 npm-debug.log

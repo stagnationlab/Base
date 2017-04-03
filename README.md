@@ -13,3 +13,20 @@
  * ~~implement new hot reload~~
  * ~~add redux~~
  * deploy using jenkins
+ 
+ to consider
+// css modules?
+// css best practices
+// easier input form management
+// 404 error
+// translation system
+// serve html files
+// https://github.com/jonathantneal/sanitize.css 
+// uig
+// webpack production
+// compy content from public
+// vscode improvements
+// server rendering
+// mainfest.json
+// nginx docker image
+// readme

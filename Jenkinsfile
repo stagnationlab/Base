@@ -32,4 +32,7 @@ pipeline {
       }
     }
   }
+  environment {
+    PATH = '~/.node/bin'
+  }
 }

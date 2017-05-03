@@ -18,6 +18,7 @@ pipeline {
         parallel(
           "Test": {
             sh 'npm t'
+            junit 'junit.xml'
             
           },
           "lint": {

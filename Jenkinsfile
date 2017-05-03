@@ -29,14 +29,7 @@ pipeline {
     }
 
     stage('Report') {
-      publishHTML (target: [
-        allowMissing: false,
-        alwaysLinkToLastBuild: false,
-        keepAll: true,
-        reportDir: 'coverage/lcov-report',
-        reportFiles: 'index.html',
-        reportName: "Application Test Coverage"
-      ])
+      junit(testResults: '**/test-report.xml', allowEmptyResults: true)
     }
 
     stage('Deploy') {

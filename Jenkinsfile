@@ -19,7 +19,7 @@ pipeline {
           "Test": {
             sh 'npm t'
             junit(testResults: './test-report.xml', allowEmptyResults: true)
-            archiveArtifacts 'build/'
+            archiveArtifacts 'build/*.*'
             
           },
           "lint": {

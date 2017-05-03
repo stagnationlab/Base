@@ -25,7 +25,7 @@ describe('Checkbox', () => {
 			className: 'new-test-class',
 			name: 'New Checkbox',
 			checked: !props.checked,
-			disabled: props.disabled,
+			disabled: !props.disabled,
 		});
 
 		expect(toJson(component)).toMatchSnapshot();

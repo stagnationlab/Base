@@ -13,6 +13,7 @@ pipeline {
         sh 'npm install'
       }
     }
+
     stage('Test') {
       steps {
         parallel(
@@ -36,7 +37,8 @@ pipeline {
         reportFiles: 'index.html',
         reportName: "Application Test Coverage"
       ])
-    },
+    }
+
     stage('Deploy') {
       steps {
         echo 'Deploying....'

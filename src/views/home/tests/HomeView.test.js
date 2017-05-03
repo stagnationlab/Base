@@ -1,76 +1,35 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { MemoryRouter } from 'react-router-dom';
 import { HomeView } from '../HomeView';
 
-const loadApiMock = jest.fn();
-const incrementMock = jest.fn();
-const decrementMock = jest.fn();
-
 const props = {
-	value: 1,
+	error: null,
 	isLoading: false,
-	apiData: undefined,
-	apiError: null,
-	loadApi: loadApiMock,
-	increment: incrementMock,
-	decrement: decrementMock,
+	posts: [
+		{
+			id: 1,
+			title: 'test 1',
+			body: 'test content 1',
+		},
+		{
+			id: 2,
+			title: 'test 2',
+			body: 'test content 2',
+		},
+	],
+	getPostsByUserId: jest.fn(),
 };
 
 const wrapper = mount(
-	<HomeView {...props} />,
+	<MemoryRouter>
+		<HomeView {...props} />
+	</MemoryRouter>,
 );
 
 describe('HomeView', () => {
 	it('renders correctly', () => {
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('have correct props', () => {
-		wrapper.setProps({
-			value: 2,
-		});
-
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('increment to be called', () => {
-		wrapper.find('.btn-increment').simulate('click');
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('api to be called', () => {
-		wrapper.find('.btn-load-data').first().simulate('click');
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('have correct loading state', () => {
-		wrapper.setProps({
-			isLoading: true,
-			apiData: undefined,
-			apiError: null,
-		});
-
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('have correct success state', () => {
-		wrapper.setProps({
-			isLoading: false,
-			apiData: 'Test api success',
-			apiError: null,
-		});
-
-		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it('have correct error state', () => {
-		wrapper.setProps({
-			isLoading: false,
-			apiData: undefined,
-			apiError: 'Api error',
-		});
-
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(toJson(wrapper.find('HomeView'))).toMatchSnapshot();
 	});
 });

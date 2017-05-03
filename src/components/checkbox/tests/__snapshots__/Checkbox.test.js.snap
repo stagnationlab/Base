@@ -1,19 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Checkbox have correct props 1`] = `
 <Checkbox
   checked={true}
   className="new-test-class"
   disabled={true}
   name="New Checkbox"
-  onChange={[Function]}>
+  onChange={[Function]}
+>
   <label
-    className="checkbox new-test-class">
+    className="checkbox new-test-class"
+  >
     <input
       checked={true}
       className="checkbox__input"
       disabled={true}
       name="New Checkbox"
       onChange={[Function]}
-      type="checkbox" />
+      type="checkbox"
+    />
     <div>
       children
     </div>

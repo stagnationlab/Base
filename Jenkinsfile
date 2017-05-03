@@ -28,10 +28,6 @@ pipeline {
       }
     }
 
-    stage('Report') {
-      junit(testResults: '**/test-report.xml', allowEmptyResults: true)
-    }
-
     stage('Deploy') {
       steps {
         echo 'Deploying....'

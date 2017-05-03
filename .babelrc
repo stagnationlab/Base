@@ -1,6 +1,6 @@
 {
   "presets": [
-	  ["es2015",  { "loose" : true, "modules": false }],
+	  ["es2015",  { "loose" : true }],
 	  "es2016",
 	  "react"
   ],
@@ -11,15 +11,7 @@
 	  "transform-class-properties",
 	  "transform-export-extensions",
 		"transform-react-jsx-img-import",
-		"jsx-control-statements"
-  ],
-
-	 "env": {
-    "test": {
-      "plugins": [
-				"transform-es2015-modules-commonjs",
-				"transform-regenerator"
-			]
-    }
-  }
+		"jsx-control-statements",
+		"transform-regenerator"
+  ]
 }

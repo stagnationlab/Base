@@ -18,8 +18,8 @@ pipeline {
         parallel(
           "Test": {
             sh 'npm t'
-            archiveArtifacts(allowEmptyArchive: true, artifacts: './test-report.xml')
             junit(testResults: './test-report.xml', allowEmptyResults: true)
+            archiveArtifacts 'build/'
             
           },
           "lint": {

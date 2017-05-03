@@ -4,7 +4,7 @@ pipeline {
       image 'node:6'
       args '-u root'
     }
-    
+
   }
   stages {
     stage('install') {
@@ -18,17 +18,26 @@ pipeline {
         parallel(
           "Test": {
             sh 'npm t'
-            archiveArtifacts(allowEmptyArchive: true, artifacts: './test-report.xml')
-            junit(testResults: './test-report.xml', allowEmptyResults: true)
-            
+
           },
           "lint": {
             sh 'npm run lint'
-            
+
           }
         )
       }
     }
+
+    stage('Report') {
+      publishHTML (target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: true,
+        reportDir: 'coverage/lcov-report',
+        reportFiles: 'index.html',
+        reportName: "Application Test Coverage"
+      ])
+    },
     stage('Deploy') {
       steps {
         echo 'Deploying....'

@@ -26,7 +26,7 @@ pipeline {
     stage('report') {
       steps {
         junit 'test-report.xml'
-        archiveArtifacts '/build'
+        archiveArtifacts(artifacts: '/build/**.*', allowEmptyArchive: true)
       }
     }
   }

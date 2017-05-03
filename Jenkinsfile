@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:6'
+      args '-u root'
     }
     
   }
@@ -31,8 +32,5 @@ pipeline {
         echo 'Deploying....'
       }
     }
-  }
-  environment {
-    PATH = '~/.node/bin'
   }
 }

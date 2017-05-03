@@ -4,7 +4,7 @@ pipeline {
       image 'node:6'
       args '-u root'
     }
-    
+
   }
   stages {
     stage('install') {
@@ -17,6 +17,14 @@ pipeline {
       steps {
         sh 'npm t'
         junit '**/test-report.xml'
+        publishHTML (target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: 'coverage/lcov-report',
+          reportFiles: 'index.html',
+          reportName: "Application Test Coverage"
+        ])
       }
     }
     stage('Deploy') {

@@ -18,7 +18,6 @@ pipeline {
         parallel(
           "Test": {
             sh 'npm t'
-
           },
           "lint": {
             sh 'npm run lint'

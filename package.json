@@ -48,6 +48,7 @@
     "image-webpack-loader": "^3.2.0",
     "jest": "^19.0.2",
     "jest-junit": "^1.5.1",
+    "jest-junit-reporter": "^1.1.0",
     "jsx-control-statements": "^3.1.5",
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.3.2",
@@ -70,7 +71,7 @@
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
-    "testResultsProcessor": "./node_modules/jest-junit",
+    "testResultsProcessor": "./node_modules/jest-junit-reporter",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],

@@ -15,17 +15,8 @@ pipeline {
     }
     stage('Test') {
       steps {
-        parallel(
-          "Test": {
-            sh 'npm t'
-            junit '**/test-report.xml'
-            
-          },
-          "lint": {
-            sh 'npm run lint'
-            
-          }
-        )
+        sh 'npm t'
+        junit '**/test-report.xml'
       }
     }
     stage('Deploy') {

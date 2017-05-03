@@ -18,7 +18,7 @@ pipeline {
         parallel(
           "Test": {
             sh 'npm t'
-            junit 'junit.xml'
+            junit(testResults: '/test-report.xml', healthScaleFactor: 1)
             
           },
           "lint": {

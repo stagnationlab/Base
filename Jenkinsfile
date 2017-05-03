@@ -4,7 +4,7 @@ pipeline {
       image 'node:6'
       args '-u root'
     }
-
+    
   }
   stages {
     stage('install') {
@@ -13,21 +13,21 @@ pipeline {
         sh 'npm install'
       }
     }
-
     stage('Test') {
       steps {
         parallel(
           "Test": {
             sh 'npm t'
+            junit '**/test-report.xml'
+            
           },
           "lint": {
             sh 'npm run lint'
-
+            
           }
         )
       }
     }
-
     stage('Deploy') {
       steps {
         echo 'Deploying....'
